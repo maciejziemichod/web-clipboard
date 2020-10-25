@@ -35,6 +35,7 @@ export default {
 <style lang="scss" scoped>
 .notification {
   width: fit-content;
+  max-width: 100%;
   position: fixed !important;
   top: 50%;
   left: 50%;

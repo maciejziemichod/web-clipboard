@@ -1,13 +1,19 @@
 <template>
   <div class="level has-background-light">
-    <span class="ml-4">
-      {{ item }}
-    </span>
+    <div class="level-left">
+      <span class="ml-4 level-item">
+        {{ item }}
+      </span>
+    </div>
     <div class="level-right">
-      <button @click="copyToClipboard(item)" class="button is-primary mr-4">
-        Copy
-      </button>
-      <button @click="deleteItem(item)" class="button is-danger">Delete</button>
+      <div class="level-item">
+        <button @click="copyToClipboard(item)" class="button is-primary mr-4">
+          Copy
+        </button>
+        <button @click="deleteItem(item)" class="button is-danger">
+          Delete
+        </button>
+      </div>
     </div>
   </div>
 </template>
