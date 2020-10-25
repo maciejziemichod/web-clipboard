@@ -1,5 +1,10 @@
 <template>
   <main class="container">
+    <div class="mt-4 buttons is-right">
+      <button @click="toggleDarkmode" class="button is-rounded is-dark">
+        <span class="icon" v-html="darkmodeIcon"> </span>
+      </button>
+    </div>
     <section class="section">
       <InputItem />
     </section>
@@ -30,12 +35,22 @@ export default {
     InputItem,
     MessageItem,
   },
+  data() {
+    return {
+      darkmode: false,
+    };
+  },
   computed: {
     items() {
       return this.$store.state.items;
     },
     showMessage() {
       return this.$store.state.message.show;
+    },
+    darkmodeIcon() {
+      return this.darkmode
+        ? "<i class='fas fa-sun'></i>"
+        : "<i class='fas fa-moon'></i>";
     },
   },
   methods: {
@@ -56,6 +71,20 @@ export default {
       }
       console.log("Resetted.");
     },
+    toggleDarkmode() {
+      this.darkmode = !this.darkmode;
+      if (this.darkmode) {
+        document.documentElement.classList.add("darkmode");
+        document.querySelectorAll("button").forEach((el) => {
+          el.classList.add("darkmode");
+        });
+      } else {
+        document.documentElement.classList.remove("darkmode");
+        document.querySelectorAll("button").forEach((el) => {
+          el.classList.remove("darkmode");
+        });
+      }
+    },
   },
   mounted() {
     if (localStorage.getItem("ditto-clipboard")) {
@@ -72,6 +101,10 @@ export default {
 </script>
 
 <style lang="scss">
+.darkmode:not(.is-dark) {
+  filter: invert(100%);
+}
+
 // #app {
 //   font-family: Avenir, Helvetica, Arial, sans-serif;
 //   -webkit-font-smoothing: antialiased;

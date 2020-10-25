@@ -2,6 +2,15 @@
 
 [live](https://maciejziemichod.github.io/web-clipboard/)
 
+## TODO:
+
+- drag n drop to change order of items
+- reset button is buggy
+- about modal
+- make it desktop app
+- login functionality
+- more abstract message component
+
 ## Project setup
 
 ```

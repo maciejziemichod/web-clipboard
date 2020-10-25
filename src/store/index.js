@@ -1,10 +1,4 @@
 import { createStore } from "vuex";
-// const defaultItems = [
-//   "niezrozumiałe",
-//   "Sytuacja epidemiczna w Polsce.",
-//   "Walka z epidemią w Polsce.",
-//   "Rozgrywki piłkarskiej Ekstraklasy.",
-// ];
 import defaultItems from "./default.js";
 
 export default createStore({

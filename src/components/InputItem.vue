@@ -21,9 +21,12 @@ export default {
   },
   methods: {
     addItem() {
-      if (this.input) {
+      if (this.input && this.$store.state.items.indexOf(this.input) === -1) {
         this.$store.commit("add", { item: this.input });
         console.log(`"${this.input}" added.`);
+        this.input = "";
+      } else {
+        // TODO: message what is wrong
         this.input = "";
       }
     },
