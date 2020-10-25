@@ -1,6 +1,6 @@
-# ditto-clipboard
+# web-clipboard
 
-### [bulma docs](https://bulma.io/documentation/)
+[live](https://maciejziemichod.github.io/web-clipboard/)
 
 ## Project setup
 
