@@ -31,10 +31,6 @@ export default createStore({
     setMessageType(state, payload) {
       state.message.type = payload.type;
     },
-    // changeOrder(state, payload) {
-    //   const index = state.items.indexOf(payload.item);
-
-    // }
   },
   actions: {},
   modules: {},

@@ -9,7 +9,9 @@
       <InputItem />
     </section>
     <section class="section">
-      <CopyItem v-for="item in items" :key="item" :item="item" />
+      <draggable :list="items">
+        <CopyItem v-for="item in items" :key="item" :item="item" />
+      </draggable>
     </section>
     <section class="section">
       <button @click="reset" class="button is-danger is-pulled-right">
@@ -26,6 +28,7 @@
 import CopyItem from "@/components/CopyItem.vue";
 import InputItem from "@/components/InputItem.vue";
 import MessageItem from "@/components/MessageItem.vue";
+import { VueDraggableNext } from "vue-draggable-next";
 import { mapMutations } from "vuex";
 
 export default {
@@ -34,6 +37,7 @@ export default {
     CopyItem,
     InputItem,
     MessageItem,
+    draggable: VueDraggableNext,
   },
   data() {
     return {
