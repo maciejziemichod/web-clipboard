@@ -30,7 +30,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["remove", "toggleMessage", "setMessageType"]),
+    ...mapMutations(["removeItem", "toggleMessage", "setMessageType"]),
     showMessage(type) {
       if (["success", "error"].indexOf(type) === -1) return;
       this.setMessageType({ type });
@@ -40,7 +40,7 @@ export default {
       }, 1000);
     },
     deleteItem(item) {
-      this.remove({ item });
+      this.removeItem({ item });
       console.log(`"${item}" deleted.`);
     },
     fallbackCopyToClipboard(text) {

@@ -45,8 +45,13 @@ export default {
     };
   },
   computed: {
-    items() {
-      return this.$store.state.items;
+    items: {
+      get() {
+        return this.$store.state.items;
+      },
+      set(value) {
+        this.$store.commit("setItems", { items: value });
+      },
     },
     showMessage() {
       return this.$store.state.message.show;
@@ -58,18 +63,15 @@ export default {
     },
   },
   methods: {
-    ...mapMutations({
-      resetItems: "reset",
-      set: "set",
-    }),
+    ...mapMutations(["resetItems", "setItems"]),
     saveToStorage() {
-      localStorage.setItem("ditto-clipboard", JSON.stringify(this.items));
+      localStorage.setItem("web-clipboard", JSON.stringify(this.items));
       console.log("Saved to storage.");
     },
     reset() {
       this.resetItems();
       try {
-        localStorage.removeItem("ditto-clipboard");
+        localStorage.removeItem("web-clipboard");
       } catch {
         console.warn("It is already resetted");
       }
@@ -79,21 +81,21 @@ export default {
       this.darkmode = !this.darkmode;
       if (this.darkmode) {
         document.documentElement.classList.add("darkmode");
-        document.querySelectorAll("button").forEach((el) => {
+        document.querySelectorAll(".button").forEach((el) => {
           el.classList.add("darkmode");
         });
       } else {
         document.documentElement.classList.remove("darkmode");
-        document.querySelectorAll("button").forEach((el) => {
+        document.querySelectorAll(".button").forEach((el) => {
           el.classList.remove("darkmode");
         });
       }
     },
   },
   mounted() {
-    if (localStorage.getItem("ditto-clipboard")) {
-      this.set({
-        items: JSON.parse(localStorage.getItem("ditto-clipboard")),
+    if (localStorage.getItem("web-clipboard")) {
+      this.setItems({
+        items: JSON.parse(localStorage.getItem("web-clipboard")),
       });
     }
 

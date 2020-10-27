@@ -12,17 +12,17 @@ export default createStore({
     };
   },
   mutations: {
-    reset(state) {
+    resetItems(state) {
       state.items = defaultItems;
     },
-    add(state, payload) {
+    addItem(state, payload) {
       state.items.push(payload.item);
     },
-    remove(state, payload) {
+    removeItem(state, payload) {
       const index = state.items.indexOf(payload.item);
       state.items.splice(index, 1);
     },
-    set(state, payload) {
+    setItems(state, payload) {
       state.items = payload.items;
     },
     toggleMessage(state, payload) {

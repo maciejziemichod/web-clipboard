@@ -22,7 +22,7 @@ export default {
   methods: {
     addItem() {
       if (this.input && this.$store.state.items.indexOf(this.input) === -1) {
-        this.$store.commit("add", { item: this.input });
+        this.$store.commit("addItem", { item: this.input });
         console.log(`"${this.input}" added.`);
         this.input = "";
       } else {
