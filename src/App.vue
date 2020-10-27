@@ -1,7 +1,10 @@
 <template>
   <main class="container">
     <div class="mt-4 buttons is-right">
-      <button @click="toggleDarkmode" class="button is-rounded is-dark">
+      <button
+        @click="toggleDarkmode(!darkmode)"
+        class="button is-rounded is-dark"
+      >
         <span class="icon" v-html="darkmodeIcon"> </span>
       </button>
     </div>
@@ -66,19 +69,21 @@ export default {
     ...mapMutations(["resetItems", "setItems"]),
     saveToStorage() {
       localStorage.setItem("web-clipboard", JSON.stringify(this.items));
+      localStorage.setItem("web-clipboard-darkmode", this.darkmode);
       console.log("Saved to storage.");
     },
     reset() {
       this.resetItems();
       try {
         localStorage.removeItem("web-clipboard");
+        localStorage.removeItem("web-clipboard-darkmode");
       } catch {
         console.warn("It is already resetted");
       }
       console.log("Resetted.");
     },
-    toggleDarkmode() {
-      this.darkmode = !this.darkmode;
+    toggleDarkmode(isOn) {
+      this.darkmode = isOn;
       if (this.darkmode) {
         document.documentElement.classList.add("darkmode");
         document.querySelectorAll(".button").forEach((el) => {
@@ -97,6 +102,9 @@ export default {
       this.setItems({
         items: JSON.parse(localStorage.getItem("web-clipboard")),
       });
+    }
+    if (localStorage.getItem("web-clipboard-darkmode") === "true") {
+      this.toggleDarkmode(true);
     }
 
     window.addEventListener("beforeunload", () => {
