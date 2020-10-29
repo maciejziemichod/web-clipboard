@@ -5,12 +5,10 @@
 ## TODO:
 
 - reset button is buggy
-- adding item when in dark mode bug
 - about modal
 - make it desktop app
 - login functionality
 - more abstract message component
-- save darkmode settings
 
 ## Project setup
 

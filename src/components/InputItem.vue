@@ -5,7 +5,7 @@
         <input v-model="input" type="text" class="input" />
       </div>
       <div class="control">
-        <button class="button is-primary">Add</button>
+        <button class="button is-primary" :class="{ darkmode }">Add</button>
       </div>
     </div>
   </form>
@@ -29,6 +29,11 @@ export default {
         // TODO: message what is wrong
         this.input = "";
       }
+    },
+  },
+  computed: {
+    darkmode() {
+      return this.$store.state.darkmode;
     },
   },
 };

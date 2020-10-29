@@ -9,6 +9,7 @@ export default createStore({
         show: false,
         type: "success",
       },
+      darkmode: false,
     };
   },
   mutations: {
@@ -31,7 +32,13 @@ export default createStore({
     setMessageType(state, payload) {
       state.message.type = payload.type;
     },
+    darkmodeOn(state) {
+      state.darkmode = true;
+    },
+    darkmodeOff(state) {
+      state.darkmode = false;
+    }
   },
-  actions: {},
-  modules: {},
+  // actions: {},
+  // modules: {},
 });

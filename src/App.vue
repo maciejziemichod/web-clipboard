@@ -17,12 +17,16 @@
       </draggable>
     </section>
     <section class="section">
-      <button @click="reset" class="button is-danger is-pulled-right">
+      <button
+        @click="reset"
+        class="button is-danger is-pulled-right"
+        :class="{ darkmode }"
+      >
         Reset
       </button>
     </section>
     <transition name="fade">
-      <MessageItem v-if="showMessage" />
+      <MessageItem v-if="isMessageShown" />
     </transition>
   </main>
 </template>
@@ -42,11 +46,6 @@ export default {
     MessageItem,
     draggable: VueDraggableNext,
   },
-  data() {
-    return {
-      darkmode: false,
-    };
-  },
   computed: {
     items: {
       get() {
@@ -56,8 +55,11 @@ export default {
         this.$store.commit("setItems", { items: value });
       },
     },
-    showMessage() {
+    isMessageShown() {
       return this.$store.state.message.show;
+    },
+    darkmode() {
+      return this.$store.state.darkmode;
     },
     darkmodeIcon() {
       return this.darkmode
@@ -83,17 +85,16 @@ export default {
       console.log("Resetted.");
     },
     toggleDarkmode(isOn) {
-      this.darkmode = isOn;
-      if (this.darkmode) {
+      if (isOn) {
+        this.$store.commit("darkmodeOn");
+      } else {
+        this.$store.commit("darkmodeOff");
+      }
+
+      if (isOn) {
         document.documentElement.classList.add("darkmode");
-        document.querySelectorAll(".button").forEach((el) => {
-          el.classList.add("darkmode");
-        });
       } else {
         document.documentElement.classList.remove("darkmode");
-        document.querySelectorAll(".button").forEach((el) => {
-          el.classList.remove("darkmode");
-        });
       }
     },
   },
@@ -103,6 +104,7 @@ export default {
         items: JSON.parse(localStorage.getItem("web-clipboard")),
       });
     }
+
     if (localStorage.getItem("web-clipboard-darkmode") === "true") {
       this.toggleDarkmode(true);
     }

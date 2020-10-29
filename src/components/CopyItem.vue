@@ -7,10 +7,18 @@
     </div>
     <div class="level-right">
       <div class="level-item">
-        <button @click="copyToClipboard(item)" class="button is-primary mr-4">
+        <button
+          @click="copyToClipboard(item)"
+          class="button is-primary mr-4"
+          :class="{ darkmode }"
+        >
           Copy
         </button>
-        <button @click="deleteItem(item)" class="button is-danger">
+        <button
+          @click="deleteItem(item)"
+          class="button is-danger"
+          :class="{ darkmode }"
+        >
           Delete
         </button>
       </div>
@@ -83,6 +91,11 @@ export default {
           console.error("Async: Could not copy text: ", err);
           this.showMessage("error");
         });
+    },
+  },
+  computed: {
+    darkmode() {
+      return this.$store.state.darkmode;
     },
   },
 };
