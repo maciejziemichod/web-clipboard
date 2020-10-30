@@ -1,5 +1,5 @@
 <template>
-  <div :class="messageClass" class="notification has-text-centered">
+  <div :class="classObject" class="notification has-text-centered">
     {{ text }}
   </div>
 </template>
@@ -27,6 +27,15 @@ export default {
     },
     messageClass() {
       return types[this.type].class;
+    },
+    darkmode() {
+      return this.$store.state.darkmode;
+    },
+    classObject() {
+      return {
+        darkmode: this.darkmode,
+        [this.messageClass]: true,
+      };
     },
   },
 };
