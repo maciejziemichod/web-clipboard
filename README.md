@@ -9,7 +9,7 @@
 - make it desktop app
 - login functionality
 - more abstract message component
-- confirm deleting item
+- confirm reset button
 
 ## Project setup
 

@@ -15,7 +15,7 @@
           Copy
         </button>
         <button
-          @click="deleteItem(item)"
+          @click="showConfirmDelete = true"
           class="button is-danger"
           :class="{ darkmode }"
         >
@@ -23,10 +23,17 @@
         </button>
       </div>
     </div>
+    <ConfirmDelete
+      :class="{ darkmode }"
+      v-if="showConfirmDelete"
+      @delete-true="deleteItem(item)"
+      @delete-false="showConfirmDelete = false"
+    />
   </div>
 </template>
 
 <script>
+import ConfirmDelete from "@/components/ConfirmDelete.vue";
 import { mapMutations } from "vuex";
 
 export default {
@@ -36,6 +43,14 @@ export default {
       required: true,
       type: String,
     },
+  },
+  components: {
+    ConfirmDelete,
+  },
+  data() {
+    return {
+      showConfirmDelete: false,
+    };
   },
   methods: {
     ...mapMutations(["removeItem", "toggleMessage", "setMessageType"]),
@@ -48,6 +63,7 @@ export default {
       }, 1000);
     },
     deleteItem(item) {
+      this.showConfirmDelete = false;
       this.removeItem({ item });
       console.log(`"${item}" deleted.`);
     },
