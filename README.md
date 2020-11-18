@@ -4,12 +4,9 @@
 
 ## TODO:
 
-- reset button is buggy
 - about modal
 - make it desktop app
 - login functionality
-- more abstract message component
-- confirm reset button
 
 ## Project setup
 

@@ -18,12 +18,18 @@
     </section>
     <section class="section">
       <button
-        @click="reset"
+        @click="showConfirmReset = true"
         class="button is-danger is-pulled-right"
         :class="{ darkmode }"
       >
         Reset
       </button>
+      <ConfirmReset
+        :class="{ darkmode }"
+        v-if="showConfirmReset"
+        @reset-true="reset"
+        @reset-false="showConfirmReset = false"
+      />
     </section>
     <transition name="fade">
       <MessageItem v-if="isMessageShown" />
@@ -35,6 +41,7 @@
 import CopyItem from "@/components/CopyItem.vue";
 import InputItem from "@/components/InputItem.vue";
 import MessageItem from "@/components/MessageItem.vue";
+import ConfirmReset from "@/components/ConfirmReset.vue";
 import { VueDraggableNext } from "vue-draggable-next";
 import { mapMutations } from "vuex";
 
@@ -45,6 +52,12 @@ export default {
     InputItem,
     MessageItem,
     draggable: VueDraggableNext,
+    ConfirmReset,
+  },
+  data() {
+    return {
+      showConfirmReset: false,
+    };
   },
   computed: {
     items: {
@@ -83,6 +96,7 @@ export default {
         console.warn("It is already resetted");
       }
       console.log("Resetted.");
+      location.reload();
     },
     toggleDarkmode(isOn) {
       if (isOn) {
