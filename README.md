@@ -7,6 +7,7 @@
 - about modal
 - make it desktop app
 - login functionality
+- confirm box abstraction
 
 ## Project setup
 

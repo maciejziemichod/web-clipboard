@@ -24,12 +24,14 @@
       >
         Reset
       </button>
-      <ConfirmReset
-        :class="{ darkmode }"
+      <ConfirmBox
         v-if="showConfirmReset"
-        @reset-true="reset"
-        @reset-false="showConfirmReset = false"
-      />
+        @confirm-true="reset"
+        @confirm-false="showConfirmReset = false"
+      >
+        <template v-slot:title>Reset</template>
+        <template v-slot:message>Are you sure you want to reset?</template>
+      </ConfirmBox>
     </section>
     <transition name="fade">
       <MessageItem v-if="isMessageShown" />
@@ -41,7 +43,7 @@
 import CopyItem from "@/components/CopyItem.vue";
 import InputItem from "@/components/InputItem.vue";
 import MessageItem from "@/components/MessageItem.vue";
-import ConfirmReset from "@/components/ConfirmReset.vue";
+import ConfirmBox from "@/components/ConfirmBox.vue";
 import { VueDraggableNext } from "vue-draggable-next";
 import { mapMutations } from "vuex";
 
@@ -52,7 +54,7 @@ export default {
     InputItem,
     MessageItem,
     draggable: VueDraggableNext,
-    ConfirmReset,
+    ConfirmBox,
   },
   data() {
     return {

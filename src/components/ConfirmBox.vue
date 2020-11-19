@@ -1,19 +1,23 @@
 <template>
-  <div class="box">
+  <div class="box" :class="{ darkmode }">
     <div class="message is-danger">
       <div class="message-header">
-        <p>Delete item</p>
+        <p>
+          <slot name="title"></slot>
+        </p>
       </div>
       <div class="message-body">
-        <div class="level">Are you sure you want to delete this item?</div>
+        <div class="level">
+          <slot name="message"></slot>
+        </div>
         <div class="level">
           <div class="level-item">
-            <button class="button is-danger is-light" @click="deleteTrue">
+            <button class="button is-danger is-light" @click="confirmTrue">
               Yes
             </button>
           </div>
           <div class="level-item">
-            <button class="button is-danger is-light" @click="deleteFalse">
+            <button class="button is-danger is-light" @click="confirmFalse">
               No
             </button>
           </div>
@@ -25,14 +29,19 @@
 
 <script>
 export default {
-  name: "ConfirmDelete",
-  emits: ["delete-true", "delete-false"],
-  methods: {
-    deleteTrue() {
-      this.$emit("delete-true");
+  name: "ConfirmBox",
+  computed: {
+    darkmode() {
+      return this.$store.state.darkmode;
     },
-    deleteFalse() {
-      this.$emit("delete-false");
+  },
+  emits: ["confirm-true", "confirm-false"],
+  methods: {
+    confirmTrue() {
+      this.$emit("confirm-true");
+    },
+    confirmFalse() {
+      this.$emit("confirm-false");
     },
   },
 };

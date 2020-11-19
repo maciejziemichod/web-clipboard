@@ -23,17 +23,21 @@
         </button>
       </div>
     </div>
-    <ConfirmDelete
-      :class="{ darkmode }"
+    <ConfirmBox
       v-if="showConfirmDelete"
-      @delete-true="deleteItem(item)"
-      @delete-false="showConfirmDelete = false"
-    />
+      @confirm-true="deleteItem(item)"
+      @confirm-false="showConfirmDelete = false"
+    >
+      <template v-slot:title>Delete item</template>
+      <template v-slot:message
+        >Are you sure you want to delete this item?</template
+      >
+    </ConfirmBox>
   </div>
 </template>
 
 <script>
-import ConfirmDelete from "@/components/ConfirmDelete.vue";
+import ConfirmBox from "@/components/ConfirmBox.vue";
 import { mapMutations } from "vuex";
 
 export default {
@@ -45,7 +49,7 @@ export default {
     },
   },
   components: {
-    ConfirmDelete,
+    ConfirmBox,
   },
   data() {
     return {
