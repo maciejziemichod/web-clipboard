@@ -30,13 +30,17 @@
         @confirm-false="showConfirmReset = false"
       >
         <template v-slot:title>Reset</template>
-        <template v-slot:message>Are you sure you want to reset?</template>
+        <template v-slot:message
+          >Are you sure you want to reset? Clearing local storage will erase the
+          data as well.
+        </template>
       </ConfirmBox>
     </section>
     <transition name="fade">
       <MessageItem v-if="isMessageShown" />
     </transition>
   </main>
+  <AppFooter />
 </template>
 
 <script>
@@ -44,6 +48,7 @@ import CopyItem from "@/components/CopyItem.vue";
 import InputItem from "@/components/InputItem.vue";
 import MessageItem from "@/components/MessageItem.vue";
 import ConfirmBox from "@/components/ConfirmBox.vue";
+import AppFooter from "@/components/AppFooter.vue";
 import { VueDraggableNext } from "vue-draggable-next";
 import { mapMutations } from "vuex";
 
@@ -55,6 +60,7 @@ export default {
     MessageItem,
     draggable: VueDraggableNext,
     ConfirmBox,
+    AppFooter,
   },
   data() {
     return {
@@ -82,6 +88,7 @@ export default {
         : "<i class='fas fa-moon'></i>";
     },
   },
+
   methods: {
     ...mapMutations(["resetItems", "setItems"]),
     saveToStorage() {
@@ -133,6 +140,11 @@ export default {
 </script>
 
 <style lang="scss">
+.container a,
+footer a {
+  color: inherit;
+}
+
 .darkmode:not(.is-dark) {
   filter: invert(100%);
 }

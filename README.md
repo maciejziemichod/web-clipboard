@@ -2,13 +2,6 @@
 
 [live](https://maciejziemichod.github.io/web-clipboard/)
 
-## TODO:
-
-- about modal
-- make it desktop app
-- login functionality
-- confirm box abstraction
-
 ## Project setup
 
 ```

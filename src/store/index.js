@@ -10,6 +10,7 @@ export default createStore({
         type: "success",
       },
       darkmode: false,
+      showAbout: false,
     };
   },
   mutations: {
@@ -37,6 +38,9 @@ export default createStore({
     },
     darkmodeOff(state) {
       state.darkmode = false;
+    },
+    setShowAbout(state, payload) {
+      state.showAbout = payload.show
     }
   },
   // actions: {},

@@ -54,5 +54,11 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
+  z-index: 1000;
+}
+@media (max-width: 800px) {
+  .box {
+    width: 90%;
+  }
 }
 </style>
