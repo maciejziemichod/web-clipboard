@@ -1,9 +1,9 @@
 <template>
   <main class="container">
-    <div class="mt-4 is-left">
+    <div class="mt-4 is-left ml-4">
       <MyLogo />
     </div>
-    <div class="mt-4 buttons is-right">
+    <div class="buttons is-right mr-4">
       <button
         @click="toggleDarkmode(!darkmode)"
         class="button is-rounded is-dark"

@@ -15,7 +15,7 @@
               >GitHub</a
             >.
           </p>
-          <div><MyLogo class="logo" /></div>
+          <div><MyLogo :width="50" /></div>
         </div>
       </div>
     </div>
@@ -48,10 +48,6 @@ export default {
 </script>
 
 <style scoped>
-.logo {
-  width: 50px;
-}
-
 a {
   color: #3273dc;
 }
