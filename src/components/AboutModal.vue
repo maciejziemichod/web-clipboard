@@ -15,6 +15,7 @@
               >GitHub</a
             >.
           </p>
+          <div><MyLogo class="logo" /></div>
         </div>
       </div>
     </div>
@@ -27,10 +28,14 @@
 </template>
 
 <script>
+import MyLogo from "@/components/MyLogo.vue";
 import { mapMutations } from "vuex";
 
 export default {
   name: "AboutModal",
+  components: {
+    MyLogo,
+  },
   methods: {
     ...mapMutations(["setShowAbout"]),
   },
@@ -43,6 +48,10 @@ export default {
 </script>
 
 <style scoped>
+.logo {
+  width: 50px;
+}
+
 a {
   color: #3273dc;
 }

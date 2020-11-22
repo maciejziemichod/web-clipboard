@@ -1,5 +1,8 @@
 <template>
   <main class="container">
+    <div class="mt-4 is-left">
+      <MyLogo />
+    </div>
     <div class="mt-4 buttons is-right">
       <button
         @click="toggleDarkmode(!darkmode)"
@@ -44,6 +47,7 @@
 </template>
 
 <script>
+import MyLogo from "@/components/MyLogo.vue";
 import CopyItem from "@/components/CopyItem.vue";
 import InputItem from "@/components/InputItem.vue";
 import MessageItem from "@/components/MessageItem.vue";
@@ -55,6 +59,7 @@ import { mapMutations } from "vuex";
 export default {
   name: "App",
   components: {
+    MyLogo,
     CopyItem,
     InputItem,
     MessageItem,
