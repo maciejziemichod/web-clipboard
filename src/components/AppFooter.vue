@@ -44,14 +44,21 @@ export default {
   watch: {
     showAbout(newValue) {
       if (newValue) {
+        window.addEventListener("keyup", this.onEscapeKeyUp);
         document.documentElement.classList.add("is-clipped");
       } else {
+        window.removeEventListener("keyup", this.onEscapeKeyUp);
         document.documentElement.classList.remove("is-clipped");
       }
     },
   },
   methods: {
     ...mapMutations(["setShowAbout"]),
+    onEscapeKeyUp(event) {
+      if (event.which === 27) {
+        this.setShowAbout({ show: false });
+      }
+    },
   },
 };
 </script>
