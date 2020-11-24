@@ -6,15 +6,11 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "node scripts/gh-pages-deploy.js",
-    "start": "node server.js",
-    "postinstall": "npm run build"
+    "deploy": "node scripts/gh-pages-deploy.js"
   },
   "dependencies": {
     "bulma": "^0.9.1",
     "core-js": "^3.6.5",
-    "express": "^4.17.1",
-    "serve-static": "^1.14.1",
     "vue": "^3.0.0",
     "vue-draggable-next": "^1.0.8",
     "vuex": "^4.0.0-0"
@@ -49,5 +45,6 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "__comments": "for heroku deployment add express and serve-static to dependencies; to scripts 'start': 'node server.js' and 'postinstall': 'npm run build'"
 }
